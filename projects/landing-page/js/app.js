@@ -19,7 +19,7 @@
  */
 const sections = document.querySelectorAll("section");
 const sectionsCount = document.querySelectorAll("section").length;
-let navBar = document.querySelector("#navbar__list");
+const navBar = document.querySelector("#navbar__list");
 
 /**
  * End Global Variables
@@ -36,6 +36,17 @@ function isInViewport(element) {
       (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
+}
+// Function to toggel the hover the active effect
+function isActive(className) {
+  const navBarSections = navBar.children;
+  for (section of navBarSections) {
+    if (section.innerHTML == className) {
+      section.style.textDecoration = "underline";
+    } else {
+      section.style.textDecoration = "none";
+    }
+  }
 }
 /**
  * End Helper Functions
@@ -69,8 +80,8 @@ navBar.addEventListener(
   function (e) {
     let value = e.target.innerHTML;
     sections.forEach((section) => {
-      console.log(section.dataset.nav, value);
       if (section.dataset.nav == value) {
+        isActive(section.dataset.nav);
         window.scrollTo(section.offsetLeft, section.offsetTop);
       }
     });
