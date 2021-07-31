@@ -21,6 +21,10 @@ body {
   color: #fff;
 }
 
+/* For smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
 /* Typeography General*/
 h1 {
   font-family: "Fira Sans", sans-serif;
